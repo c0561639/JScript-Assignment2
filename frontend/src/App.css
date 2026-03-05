@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slide-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 1.0s ease, opacity 0.5s ease;
+}
+
+.slide-wrapper.open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+/* Make grid match Bootstrap card aesthetic */
+.custom-grid {
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* Header styling */
+.ag-theme-alpine .ag-header {
+  background-color: #e9f2ff !important;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.ag-theme-alpine .ag-header-cell-label {
+  justify-content: center;
+}
+
+/* Row styling */
+.ag-theme-alpine .ag-row {
+  font-size: 15px;
+}
+
+/* Grid border remove */
+.ag-theme-alpine .ag-root-wrapper {
+  border: none !important;
+}
+
+/* Hover effect */
+.ag-theme-alpine .ag-row-hover {
+  background-color: #f0f7ff !important;
+}
+
+/* Pagination styling */
+.ag-theme-alpine .ag-paging-panel {
+  font-size: 14px;
+  padding: 10px;
+  background: #fff !important;
+  border-top: 1px solid #ccc;
+}
+
+/* Make the “filter” icons smaller and cleaner */
+.ag-theme-alpine .ag-icon {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Even row color */
+.ag-theme-alpine .ag-row-even {
+  background-color: #f8faff !important;
+}
+
+/* Odd row color */
+.ag-theme-alpine .ag-row-odd {
+  background-color: #ffffff !important;
+}
+
+.ag-theme-alpine .ag-cell {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+

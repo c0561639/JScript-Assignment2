@@ -1,0 +1,96 @@
+<!-- Sean Clarke
+     c0561639
+     10/28/2025
+-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c0561639 - Assignment 1</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-primary">
+    <div class="min-vh-100 d-flex flex-column justify-content-center p-3">
+        <div class="d-flex justify-content-center mt-2 mb-2">
+            <div class="card bg-primary-subtle justify-content-center align-items-center
+                        text-center fs-1 shadow" style="height: 5rem; width: 20rem;">Update A Book
+            </div>
+        </div>
+
+        <form id="form">
+            <div class="mx-auto text-center form-control shadow bg-primary-subtle" style="max-width: 500px;">
+                <div class="form-label">
+                    <input class="form-control text-center" name="title" placeholder="Title" required>
+                </div>
+                <div class="form-label">
+                    <input class="form-control text-center" name="author" placeholder="Author" required>
+                </div>
+                <div class="form-label">
+                    <input class="form-control text-center" type="text" inputmode="numeric" pattern="\d{1,4}"
+                        name="year" placeholder="Year" required>
+                </div>
+                <button type="submit" class="btn btn-success mb-2">Update</button>
+            </div>
+        </form>
+
+        <a class="btn btn-secondary shadow mt-2 d-block mx-auto text-center" href="/index.html" role="button"
+            style="max-width:300px;">Return to List</a>
+
+        <script>
+            //API Path
+            const API = "/api/books";
+            //Reads query string from URL and assigns to params for easy use
+            const params = new URLSearchParams(location.search);
+            //Pulls 'id' from params
+            const id = params.get("id");
+            //Gets form ID from DOM
+            const form = document.getElementById("form");
+            load();
+
+            //Function to fetch data from API using ID, and if successful, returns the data into correct form
+            //boxes
+            async function load() {
+                const res = await fetch(`${API}/${id}`);
+                const m = await res.json();
+                if (res.ok) {
+                    form.title.value = m.title;
+                    form.author.value = m.author;
+                    form.year.value = m.year;
+                }
+            }
+
+            form.addEventListener("submit", async (e) => {
+
+                //Read inputs from user
+                const formData = new FormData(form);
+
+                //Turning formData entries into string objects
+                const payload = Object.fromEntries(formData.entries());
+
+                //Turning 'Year' into a number (if it is one which it should be)
+                if (payload.year) payload.year = Number(payload.year);
+
+                //Sending JSON 'PUT' to the API with user inputs
+                const res = await fetch(`${API}/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                //Parse JSON, if valid will return "Book updated" popup alret.
+                const data = await res.json().catch(() => ({}));
+                alert("Book updated!");
+                //Returns to index page
+                window.location.href = "/index.html";
+            });
+        </script>
+    </div>
+</body>
+
+</html>
