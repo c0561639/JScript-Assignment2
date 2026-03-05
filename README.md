@@ -1,9 +1,3 @@
-Requirements Missed:
-    Hey Terry! I know the app is intended to be a "User" based CRUD app, however if you remember I accidently did it as a book catalog (oops I didn't read the instructions!). Since I already had the app created, and you said in the instructions that we could use our exisitng EXPRESS app, I made the assumption that it would be alright if I continued with it being a Book Catalog. Hopefully this is acceptable.
-
-    - Web Page should have 3 pages
-        - I actually made the entire form interactable and all functional on 1 single page. I know this goes against your requirements, but I wanted to learn & create a modern functional app that was a pleasent user experience. I do meet the criteria that the 3 pages would've had, just condensed into 1 page.
-
 Planning:
     - Use exisitng EXPRESS app (BOOK CATALOG) and extend it to function with REACT
     - Reorganize file structure for simplicity & REACT compatibility
@@ -60,4 +54,5 @@ Usage:
         1. Click the “Delete” button beside the book you would like to delete
 
     Filter the List of Books
+
         1. Enter query into “Search Bar” (Title name, Author Name, or Year)
